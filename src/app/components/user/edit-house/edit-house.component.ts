@@ -112,7 +112,12 @@ export class EditHouseComponent implements OnInit {
     )
       .then((url) => {
         console.log(`All success`, url);
-        this.arrayPicture = url;
+        let puctureAdd: Picture;
+        for (let i = 0; i < url.length; i++) {
+          puctureAdd = {idAnh: null, tenAnh: url[i].tenAnh};
+          this.arrayPicture.push(puctureAdd);
+        }
+        console.log(this.arrayPicture);
         this.isDone = true;
         this.isLoading = false;
       })
@@ -142,9 +147,11 @@ export class EditHouseComponent implements OnInit {
   }
 
   pushDeleteImage(index: number) {
-    let picture1: Picture;
+    let picture1: Picture[];
     picture1 = this.house.picture.splice(index, 1);
-    this.arrayPicture.push(picture1);
+    for (let i = 0; i < picture1.length; i++) {
+      this.arrayPicture.push(picture1[i]);
+    }
     console.log(this.arrayPicture);
   }
 }

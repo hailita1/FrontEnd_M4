@@ -1,4 +1,4 @@
 export interface Picture {
-  id?: number;
+  idAnh?: number;
   tenAnh: string;
 }
